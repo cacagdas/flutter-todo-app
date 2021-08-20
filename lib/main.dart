@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_todo_app/presentation/pages/todo_page.dart';
+import 'package:flutter_todo_app/presentation/pages/todos_page.dart';
 import 'package:flutter_todo_app/presentation/router.dart';
 
-void main() {
+import 'di/component/service_locator.dart';
+
+void main() async {
+  await setupLocator();
   runApp(TodoApp(
     router: AppRouter(),
   ));
