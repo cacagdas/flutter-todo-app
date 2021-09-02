@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_todo_app/constants/strings.dart';
 import 'package:flutter_todo_app/cubit/todos_cubit.dart';
+import 'package:flutter_todo_app/di/component/service_locator.dart';
 
 class TodosPage extends StatelessWidget {
   const TodosPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-
-    //BlocProvider.of<TodosCubit>(context).fetchTodos();
+    getIt<TodosCubit>().fetchTodos();
 
     return Scaffold(
       appBar: AppBar(
