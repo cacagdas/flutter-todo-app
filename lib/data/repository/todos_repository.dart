@@ -10,4 +10,8 @@ class TodosRepository {
     return await _service.fetchTodos();
   }
 
+  Future<bool> changeCompletionStatus(bool completed, int id) async {
+    final patchObject = {"isCompleted": completed};
+    return await _service.patchTodo(patchObject, id);
+  }
 }

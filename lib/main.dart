@@ -18,13 +18,11 @@ class TodoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Todo Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      debugShowCheckedModeBanner: false,
-      onGenerateRoute: router!.generateRoute,
-      home: TodosPage(),
-    );
+        title: 'Flutter Todo Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        debugShowCheckedModeBanner: false,
+        onGenerateRoute: router!.generateRoute);
   }
 }

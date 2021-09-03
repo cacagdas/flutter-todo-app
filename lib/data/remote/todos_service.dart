@@ -17,4 +17,13 @@ class TodosService {
     }
   }
 
+  Future<bool> patchTodo(Map<String, bool> patchObject, int id) async {
+    try {
+      await _dioClient.patch(Endpoints.todos, data: patchObject);
+      return true;
+    } catch (e) {
+      print(e.toString());
+      throw e;
+    }
+  }
 }
