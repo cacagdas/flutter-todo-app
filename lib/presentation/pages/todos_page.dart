@@ -42,15 +42,18 @@ class TodosPage extends StatelessWidget {
   }
 
   Widget _todo(Todo todo, context) {
-    return Dismissible(
-      key: Key(todo.id.toString()),
-      child: _todoTile(todo, context),
-      confirmDismiss: (_) async {
-        BlocProvider.of<TodosCubit>(context).changeCompletionStatus(todo);
-        return false;
-      },
-      background: Container(
-        color: Colors.indigo,
+    return InkWell(
+      onTap: () => Navigator.pushNamed(context, EDIT_TODO_ROUTE),
+      child: Dismissible(
+        key: Key(todo.id.toString()),
+        child: _todoTile(todo, context),
+        confirmDismiss: (_) async {
+          BlocProvider.of<TodosCubit>(context).changeCompletionStatus(todo);
+          return false;
+        },
+        background: Container(
+          color: Colors.indigo,
+        ),
       ),
     );
   }
