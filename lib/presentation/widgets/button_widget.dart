@@ -4,7 +4,7 @@ import 'package:flutter_todo_app/values/colors.dart' as colors;
 
 class ButtonWidget extends StatelessWidget {
   final String? label;
-  final Function? onPress;
+  final void Function() onPress;
   final bool? disabled;
   final IconData? icon;
 
@@ -13,12 +13,10 @@ class ButtonWidget extends StatelessWidget {
   const ButtonWidget(
       {Key? key,
         this.label,
-        this.onPress,
+        required this.onPress,
         this.disabled,
         this.icon})
       : super(key: key);
-
-  Function? onButtonPress() => disabled == true ? null : onPress;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +26,8 @@ class ButtonWidget extends StatelessWidget {
       //return darkModeOn;
       return false; //dark mode is unused
     }
+
+    final _action = disabled == true ? null : onPress;
 
     Color backgroundColor = disabled ?? false
         ? colors.disabledTextColor
@@ -44,7 +44,7 @@ class ButtonWidget extends StatelessWidget {
           shape: RoundedRectangleBorder(
               side: BorderSide(color: borderColor),
               borderRadius: BorderRadius.circular(20)),
-          onPressed: onButtonPress,
+          onPressed: _action,
           elevation: _elevation,
           color: backgroundColor,
           child: TextWidget(

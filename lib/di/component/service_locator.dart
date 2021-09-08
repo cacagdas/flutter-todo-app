@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_todo_app/cubit/add_todo_cubit.dart';
 import 'package:flutter_todo_app/cubit/todos_cubit.dart';
 import 'package:flutter_todo_app/data/remote/dio_client.dart';
 import 'package:flutter_todo_app/data/remote/todos_service.dart';
@@ -16,4 +17,5 @@ Future<void> setupLocator() async {
   getIt.registerSingleton(TodosRepository(getIt<TodosService>()));
 
   getIt.registerSingleton(TodosCubit(getIt<TodosRepository>()));
+  getIt.registerSingleton(AddTodoCubit(getIt<TodosRepository>(), getIt<TodosCubit>()));
 }
