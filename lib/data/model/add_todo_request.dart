@@ -5,7 +5,7 @@ class AddTodoRequest {
   AddTodoRequest({required this.title, required this.isCompleted});
 
   Map<String, dynamic> toJson() => {
-    "title": title,
-    "isCompleted": isCompleted,
-  };
+        "title": title,
+        "isCompleted": isCompleted,
+      };
 }

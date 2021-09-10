@@ -9,32 +9,22 @@ class TodosService {
   TodosService(this._dioClient);
 
   Future<List<Todo>>? fetchTodos() async {
-    try {
-      final res = await _dioClient.get(Endpoints.todos) as List;
-      return res.map((e) => Todo.fromJson(e)).toList();
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
+    final res = await _dioClient.get(Endpoints.todos) as List;
+    return res.map((e) => Todo.fromJson(e)).toList();
   }
 
-  Future<bool> patchTodo(Map<String, bool> patchObject, int id) async {
-    try {
-      await _dioClient.patch("${Endpoints.todos}/$id", data: patchObject);
-      return true;
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
+  Future<bool> patchTodo(Map<String, dynamic> patchObject, int id) async {
+    await _dioClient.patch("${Endpoints.todos}/$id", data: patchObject);
+    return true;
   }
 
   Future<Map> addTodo(AddTodoRequest addTodoRequest) async {
-    try {
-      final res = await _dioClient.post(Endpoints.todos, data: addTodoRequest.toJson());
-      return res;
-    } catch (e) {
-      print(e.toString());
-      throw e;
-    }
+    return await _dioClient.post(Endpoints.todos,
+        data: addTodoRequest.toJson());
+  }
+
+  Future<bool> deleteTodo(int id) async {
+    await _dioClient.delete("${Endpoints.todos}/$id");
+    return true;
   }
 }

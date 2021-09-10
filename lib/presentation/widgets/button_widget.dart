@@ -11,11 +11,7 @@ class ButtonWidget extends StatelessWidget {
   final double _elevation = 3;
 
   const ButtonWidget(
-      {Key? key,
-        this.label,
-        required this.onPress,
-        this.disabled,
-        this.icon})
+      {Key? key, this.label, required this.onPress, this.disabled, this.icon})
       : super(key: key);
 
   @override

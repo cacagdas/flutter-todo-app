@@ -19,7 +19,24 @@ class TextWidget extends StatelessWidget {
   final bool? underline;
   final TextAlign? align;
 
-  const TextWidget({Key? key, this.align, this.smaller, this.underline, this.text, this.title, this.bold, this.big, this.small, this.center, this.white, this.dark, this.accent, this.primary, this.color, this.maxLines}) : super(key: key);
+  const TextWidget(
+      {Key? key,
+      this.align,
+      this.smaller,
+      this.underline,
+      this.text,
+      this.title,
+      this.bold,
+      this.big,
+      this.small,
+      this.center,
+      this.white,
+      this.dark,
+      this.accent,
+      this.primary,
+      this.color,
+      this.maxLines})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -27,35 +44,41 @@ class TextWidget extends StatelessWidget {
 
     final String textValue = text ?? "";
 
-    final double fontSize = title == true ?
-    dimens.fontTextTitle
-        :
-    big == true ?
-    dimens.fontTextBig
-        :
-    small == true ? dimens.fontTextSmall : smaller == true ? dimens.fontTextSmaller : dimens.fontText;
+    final double fontSize = title == true
+        ? dimens.fontTextTitle
+        : big == true
+            ? dimens.fontTextBig
+            : small == true
+                ? dimens.fontTextSmall
+                : smaller == true
+                    ? dimens.fontTextSmaller
+                    : dimens.fontText;
 
-    final Color customColor = primary == true ?
-    colors.primaryColor
-        :
-    white == true ?
-    Colors.white
-        :
-    accent == true ? colors.accentColor : colors.primaryColorDark;
+    final Color customColor = primary == true
+        ? colors.primaryColor
+        : white == true
+            ? Colors.white
+            : accent == true
+                ? colors.accentColor
+                : colors.primaryColorDark;
 
-    return Text(
-        textValue,
+    return Text(textValue,
         maxLines: maxLines,
-        textAlign: center == true ? TextAlign.center : align == null ? null : align,
+        textAlign: center == true
+            ? TextAlign.center
+            : align == null
+                ? null
+                : align,
         style: TextStyle(
-            decoration: underline == true ? TextDecoration.underline : TextDecoration.none,
+            decoration: underline == true
+                ? TextDecoration.underline
+                : TextDecoration.none,
             fontSize: fontSize,
-            color: color == null ?
-            dark == true ? colors.backgroundColor : customColor
-                :
-            color,
-            fontWeight: isBold
-        )
-    );
+            color: color == null
+                ? dark == true
+                    ? colors.backgroundColor
+                    : customColor
+                : color,
+            fontWeight: isBold));
   }
 }

@@ -12,15 +12,16 @@ class AddTodoCubit extends Cubit<AddTodoState> {
 
   AddTodoCubit(this._repository, this._todosCubit) : super(AddTodoInitial());
 
-
   void addTodo(String text) {
-    if(text.isEmpty) {
+    if (text.isEmpty) {
       emit(AddTodoError('Todo is empty'));
       return;
     }
 
     emit(AddingTodo());
-    _repository.addTodo(AddTodoRequest(title: text, isCompleted: false)).then((value) {
+    _repository
+        .addTodo(AddTodoRequest(title: text, isCompleted: false))
+        .then((value) {
       _todosCubit.addTodo(value).whenComplete(() => emit(TodoAdded()));
     });
   }

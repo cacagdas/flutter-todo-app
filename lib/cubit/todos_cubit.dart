@@ -37,4 +37,12 @@ class TodosCubit extends Cubit<TodosState> {
       emit(TodosLoaded(currentState.todos));
     }
   }
+
+  void deleteTodo(Todo todo) {
+    final currentState = state;
+    if (currentState is TodosLoaded) {
+      currentState.todos.removeAt(currentState.todos.indexOf(todo));
+      emit(TodosLoaded(currentState.todos));
+    }
+  }
 }

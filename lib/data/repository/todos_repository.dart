@@ -15,6 +15,17 @@ class TodosRepository {
   }
 
   Future<Todo> addTodo(AddTodoRequest addTodoRequest) async {
-    return await _service.addTodo(addTodoRequest).then((value) => Todo.fromJson(value));
+    return await _service
+        .addTodo(addTodoRequest)
+        .then((value) => Todo.fromJson(value));
+  }
+
+  Future<bool> deleteTodo(int id) async {
+    return await _service.deleteTodo(id);
+  }
+
+  Future<bool> updateTodo(String text, int id) async {
+    final patchObject = {"title": text};
+    return await _service.patchTodo(patchObject, id);
   }
 }

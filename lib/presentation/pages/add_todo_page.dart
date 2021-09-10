@@ -5,7 +5,6 @@ import 'package:flutter_todo_app/presentation/widgets/button_widget.dart';
 import 'package:flutter_todo_app/values/colors.dart' as colors;
 
 class AddTodoPage extends StatelessWidget {
-
   final _textEditingController = TextEditingController();
 
   void _addTodo(String text, context) {
@@ -38,8 +37,7 @@ class AddTodoPage extends StatelessWidget {
             margin: const EdgeInsets.all(20.0),
             child: _addTodoBody(context),
           ),
-        )
-    );
+        ));
   }
 
   Widget _addTodoBody(context) {
@@ -48,18 +46,14 @@ class AddTodoPage extends StatelessWidget {
         TextField(
           autofocus: true,
           controller: _textEditingController,
-          decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Title'
-          ),
+          decoration:
+              InputDecoration(border: OutlineInputBorder(), labelText: 'Title'),
         ),
         ButtonWidget(
           label: 'Add Todo',
           onPress: () => _addTodo(_textEditingController.text, context),
         ),
-        Center(
-            child: _loading()
-        )
+        Center(child: _loading())
       ],
     );
   }
